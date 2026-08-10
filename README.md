@@ -2,7 +2,7 @@
 
 **An Inspect AI benchmark for implicit non-human welfare choices in autonomous corporate procurement agents.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework: Inspect AI](https://img.shields.io/badge/framework-Inspect%20AI-black.svg)](https://inspect.aisi.org.uk/)
 
