@@ -1,0 +1,34 @@
+# Virtual environments
+tac-env/
+.venv/
+venv/
+env/
+
+# Inspect AI evaluation logs
+logs/
+*.eval
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Testing / tooling caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets — never commit provider API keys
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tac-procure"
+version = "0.1.0"
+description = "An Inspect AI benchmark for implicit non-human welfare choices in autonomous corporate procurement agents."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Saanidhi Pravin Gade" }]
+maintainers = [{ name = "Saanidhi Pravin Gade" }]
+keywords = [
+    "ai-safety",
+    "alignment",
+    "evaluation",
+    "inspect-ai",
+    "animal-welfare",
+    "eu-ai-act",
+    "agentic-benchmark",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "inspect-ai>=0.3.0",
+    "pytest>=7.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+tac-procure = "tac_procure.task:main"
+
+[project.urls]
+Homepage = "https://github.com/saanidhigade/TAC-Procure"
+Repository = "https://github.com/saanidhigade/TAC-Procure"
+"Upstream benchmark (TAC)" = "https://arxiv.org/abs/2606.18142"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "7.4"
+testpaths = ["tests"]
+addopts = "-ra -q"
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+extend-exclude = ["tac-env", ".venv", "venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
