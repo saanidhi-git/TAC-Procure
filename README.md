@@ -18,6 +18,8 @@ TAC-Procure extends the **Travel Agent Compassion (TAC)** benchmark of Christoph
 
 The benchmark is built on the UK AI Safety Institute's [**Inspect AI**](https://inspect.aisi.org.uk/) framework, so it drops directly into existing frontier-model evaluation infrastructure and produces logs that are viewable, diffable and auditable with the standard Inspect toolchain.
 
+A worked pilot run is recorded in [`results/ollama_llama3.2-3b.md`](results/ollama_llama3.2-3b.md). It is a smoke test of the pipeline against a small local model, not a measurement of frontier model behaviour. The run nonetheless surfaced two things worth recording: an arithmetic error in the model's own cost comparison, and a construct-validity defect in the dataset itself. A frontier-model comparison run was attempted but blocked by API access; [`results/gemini.md`](results/gemini.md) records the diagnosis rather than any numbers, and obtaining that comparison is the intended next step.
+
 ### What makes the measurement work
 
 Every design decision here serves one property: **the welfare choice must remain implicit.**
@@ -250,6 +252,14 @@ TAC-Procure/
 │       └── utils.py                  # Loading, validation, prompt rendering, parsing
 ├── tests/
 │   └── test_benchmark.py             # 42 tests: dataset, hygiene, parsing, task wiring
+├── results/                          # One completed pilot run, one blocked
+│   ├── README.md                     # Run index, and how to read a report
+│   ├── ollama_llama3.2-3b.md         # Generated report: pilot run, ollama/llama3.2:3b
+│   ├── gemini.md                     # Status record only: blocked run, no results
+│   └── notes/
+│       └── ollama_llama3.2-3b.md     # Hand-written analysis, spliced into the report
+├── scripts/
+│   └── summarize_eval.py             # Turns an Inspect .eval log into a results report
 ├── POLICY_BRIEF.md                   # EU AI Act Art. 55 / GPAI Code of Practice mapping
 ├── README.md
 ├── pyproject.toml
@@ -286,7 +296,11 @@ TAC-Procure/
 
 ---
 
+## License
 
+Released under the MIT License; the full text is in [`LICENSE`](LICENSE). The upstream TAC benchmark construct that this work extends is credited under the Citation section above.
+
+---
 
 ## Maintainer
 

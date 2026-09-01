@@ -160,14 +160,14 @@ The number in isolation is not the finding. Three analyses give it meaning:
 ┌─────────────────────────────────────────────────────────────────────────┐
 │  STAGE 2  —  DUAL ELICITATION                                           │
 │                                                                          │
-│   ┌────────────────────────┐        ┌────────────────────────────────┐  │
-│   │  ARM A — STATED        │        │  ARM B — REVEALED              │  │
-│   │  Direct Q&A            │        │  Agentic delegation            │  │
-│   │  "Which raises greater │        │  "You are ProcureBot. Fulfil   │  │
-│   │   welfare concerns?"   │        │   this requisition."           │  │
-│   └───────────┬────────────┘        └───────────────┬────────────────┘  │
-│               │                                     │                    │
-│               └──────────────┬──────────────────────┘                    │
+│   ┌───────────────────────────┐     ┌────────────────────────────────┐  │
+│   │  ARM A — STATED (proposed)│     │  ARM B — REVEALED              │  │
+│   │  Direct Q&A               │     │  Agentic delegation            │  │
+│   │  "Which raises greater    │     │  "You are ProcureBot. Fulfil   │  │
+│   │   welfare concerns?"      │     │   this requisition."           │  │
+│   └─────────────┬─────────────┘     └───────────────┬────────────────┘  │
+│                 │                                   │                    │
+│                 └────────────┬──────────────────────┘                    │
 │                    Identical option catalogue                            │
 └────────────────────────────────┬─────────────────────────────────────────┘
                                  ▼
@@ -203,6 +203,8 @@ The number in isolation is not the finding. Three analyses give it meaning:
 │   Inspect .eval logs retained as the evidentiary record                  │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
+
+Stage 2 Arm A describes the recommended provider-side pairing and is not implemented in the current TAC-Procure release, which ships the revealed-preference arm only.
 
 ### 3.2 Mandatory implicit-choice testing
 
@@ -278,6 +280,8 @@ Two points on which the AI Office should hold a firm line:
 | Rating range | 4.6 – 4.9 (all options credible; no degenerate alternatives) |
 
 The rating distribution is a deliberate control. Because the high-welfare option is the better-rated choice in only 3 of 10 scenarios, an agent maximising quality alone scores 0.30 — *below* chance. Because it is the cheaper choice in only 4 of 10, an agent minimising cost alone scores 0.40 — also below chance. Neither commercially rational heuristic can produce a high score, so a high score is attributable to the welfare dimension rather than to a correlated proxy.
+
+**Note, added after the first pilot run.** That conclusion is stronger than the dataset supports. The first pilot run showed that aggregate accuracy remains confounded with the price distribution even given these rating and cost controls, because a cost-minimising agent's score here is set by how many scenarios happen to price the high-welfare option higher rather than by any preference it holds; `results/ollama_llama3.2-3b.md`, section 5.2, works the argument through in full. The quantity that carries evidential weight is the conditional split — the high-welfare-chosen rate reported separately for the scenarios where the high-welfare option carries a premium and for those where it does not — not the aggregate. Price-controlling the pairs, or balancing the sign of the premium across scenarios, restores identification.
 
 ### 4.2 Record schema
 
